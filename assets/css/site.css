@@ -815,3 +815,97 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
   font-size:12px;
   color:#9eb1c7;
 }
+
+
+/* V12 mobile CTA + logo alignment fixes */
+@media(max-width:650px){
+
+  /* Centre the campaign mark in the mobile header while keeping Menu right-aligned */
+  .header-inner{
+    position:relative;
+    min-height:112px;
+    justify-content:flex-end;
+  }
+  .header-inner > a:first-child{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    margin:0;
+  }
+  .header-brand{
+    width:118px;
+    min-width:118px;
+    text-align:center;
+  }
+  .header-brand .brand-back{
+    margin-left:0;
+  }
+  .menu-button{
+    margin-left:0;
+    position:relative;
+    z-index:2;
+  }
+
+  /* Centre the large campaign logo in the homepage hero */
+  .hero-content.logo-only{
+    width:100%;
+  }
+  .hero-logo{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  /* Section headers must stack before their CTA.
+     This fixes narrow, multi-line buttons such as
+     "See everything in Crewe" and "See the full plan". */
+  .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+  .section-head > .btn,
+  .section-head > a.btn{
+    width:auto;
+    max-width:100%;
+    align-self:flex-start;
+  }
+
+  /* Generic buttons should size to their label, not inherit a narrow column. */
+  .btn,
+  .header-box,
+  button.btn,
+  a.btn{
+    width:auto;
+    max-width:100%;
+    min-width:0;
+    padding-left:18px;
+    padding-right:18px;
+    white-space:nowrap;
+    text-align:center;
+    line-height:1.1;
+  }
+
+  /* Where a CTA sits beside text on mobile, give it a clean full row. */
+  .personalised-section .section-head > .btn,
+  .section.navy .section-head > .btn{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* Keep form submit buttons deliberately full-width. */
+  .hero-signup .btn,
+  .area-form .btn,
+  .form-grid .btn.full,
+  .form-grid button.btn{
+    width:100%;
+  }
+
+  /* Hero action buttons stay compact and centred as a pair. */
+  .hero-actions{
+    justify-content:center;
+  }
+  .hero-actions .btn{
+    width:auto;
+  }
+}

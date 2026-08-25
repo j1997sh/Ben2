@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Back Ben for Mayor | Back Ben for Mayor</title>
 <meta name="description" content="A fresh start for Cheshire & Warrington.">
-<link rel="stylesheet" href="assets/css/site.css?v=9">
-<script src="assets/data/areas.js?v=9"></script>
+<link rel="stylesheet" href="assets/css/site.css?v=10">
+<script src="assets/data/areas.js?v=10"></script>
 </head>
 <body data-page="home">
 
@@ -46,7 +46,7 @@
     <div class="hero-content logo-only">
       <img class="hero-logo" src="assets/images/back-ben-for-mayor-logo.png" alt="Back Ben for Mayor of Cheshire and Warrington">
       <div class="hero-actions"><a class="btn" href="volunteer.html">Get involved</a><a class="btn white" href="plan.html">See Ben’s plan</a></div>
-      <form class="hero-signup" data-demo-form="signup" data-thanks="thanks.html">
+      <form class="hero-signup" data-demo-form="signup" data-thanks="sign-up-thanks.html">
         <input name="first_name" placeholder="First name">
         <input name="last_name" placeholder="Last name">
         <input class="wide" name="email" type="email" placeholder="Email address" required>
@@ -64,11 +64,12 @@
 </section>
 <section class="personalised-section" id="homeLocalBlock">
   <div class="container">
-    <div class="section-head"><div><h2>Your area: <span data-area-name></span></h2><p class="lead">One local story, one campaign and one upcoming event.</p></div><a class="btn navy" href="area.html">Open your local hub</a></div>
-    <div class="grid-3">
+    <div class="section-head"><div><h2>Your area: <span data-area-name></span></h2><p class="lead">One local story, one campaign and one upcoming event.</p></div><a class="btn navy" href="area.html">See everything in <span data-area-name></span></a></div>
+    <div class="home-local-grid-4">
       <article class="card"><div class="card-image" id="localStoryImage"></div><div class="card-body"><h3 id="localStoryTitle"></h3><p id="localStoryText"></p><a class="btn navy" id="localStoryLink" href="news.html">Read more</a></div></article>
       <article class="card"><div class="card-image" id="localCampaignImage"></div><div class="card-body"><h3 id="localCampaignTitle"></h3><p id="localCampaignText"></p><a class="btn navy" id="localCampaignLink" href="plan.html">Explore campaign</a></div></article>
       <article class="card"><div class="card-image" id="localEventImage"></div><div class="card-body"><h3 id="localEventTitle"></h3><p id="localEventText"></p><a class="btn navy" id="localEventLink" href="events.html">View event</a></div></article>
+      <article class="card"><div class="card-image" id="localPolicyImage"></div><div class="card-body"><h3 id="localPolicyTitle">Local policy priority</h3><p id="localPolicyText"></p><a class="btn navy" id="localPolicyLink" href="plan.html">Read the policy</a></div></article>
     </div>
   </div>
 </section>
@@ -113,6 +114,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=9"></script>
+<script src="assets/js/site.js?v=10"></script>
 </body>
 </html>

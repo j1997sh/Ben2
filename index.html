@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Back Ben for Mayor | Back Ben for Mayor</title>
+<meta name="description" content="A fresh start for Cheshire & Warrington.">
+<link rel="stylesheet" href="assets/css/site.css?v=3">
+<script src="assets/data/areas.js?v=1"></script>
+</head>
+<body data-page="home">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo-image-wrap" href="index.html" aria-label="Back Ben for Mayor"><img class="logo-image" src="assets/images/back-ben-for-mayor-logo.png" alt="Back Ben for Mayor of Cheshire and Warrington"></a>
+    <nav class="nav"><a class="active" href="index.html">Home</a><a class="" href="about.html">About Ben</a><a class="" href="experience.html">Experience</a><a class="" href="plan.html">Ben’s plan</a><a class="" href="area.html">Your area</a><a class="" href="news.html">News</a><a class="" href="events.html">Events</a><a class="" href="tell-ben.html">Tell Ben</a></nav>
+    <div class="header-actions">
+      <a class="header-box volunteer" href="volunteer.html">Get involved</a>
+      <a class="header-box donate" href="donate.html">Donate</a>
+    </div>
+    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+  </div>
+</header>
+<div class="local-status" id="localStatus">
+  <div class="container local-status-inner">
+    <div>Showing campaign updates for <strong id="localStatusName"></strong></div>
+    <div class="local-status-actions"><a href="area.html">Change area</a><button id="clearArea" type="button">×</button></div>
+  </div>
+</div>
+<div class="mobile-nav" id="mobileNav">
+  <nav><a href="index.html">Home</a><a href="about.html">About Ben</a><a href="experience.html">Experience</a><a href="plan.html">Ben’s plan</a><a href="area.html">Your area</a><a href="news.html">News</a><a href="events.html">Events</a><a href="tell-ben.html">Tell Ben</a></nav>
+  <div class="mobile-nav-actions">
+    <a class="header-box volunteer" href="volunteer.html">Get involved</a>
+    <a class="header-box donate" href="donate.html">Donate</a>
+  </div>
+</div>
+
+
+<section class="hero" style="background-image:url('assets/images/ben-home-hero.jpg')">
+  <div class="container hero-inner">
+    <div class="hero-content logo-only">
+      <img class="hero-logo" src="assets/images/back-ben-for-mayor-logo.png" alt="Back Ben for Mayor of Cheshire and Warrington">
+      <div class="hero-actions"><a class="btn" href="volunteer.html">Get involved</a><a class="btn white" href="plan.html">See Ben’s plan</a></div>
+      <form class="hero-signup" data-demo-form="signup" data-thanks="thanks.html">
+        <input name="first_name" placeholder="First name">
+        <input name="last_name" placeholder="Last name">
+        <input class="wide" name="email" type="email" placeholder="Email address" required>
+        <input name="postcode" placeholder="Postcode">
+        <button class="btn" type="submit">Join the campaign</button>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="ribbon">
+  <div class="container ribbon-inner">
+    <div><h2>Ben in your area</h2><p>Enter your postcode to prioritise local news, visits and events.</p></div>
+    <div><form class="area-form" data-area-form><input placeholder="Enter your postcode"><button class="btn" type="submit">Find my area</button></form><div class="area-note">Demo: try CW1 2AB for Crewe.</div></div>
+  </div>
+</section>
+<section class="personalised-section" id="homeLocalBlock">
+  <div class="container">
+    <div class="section-head"><div><h2>Your area: <span data-area-name></span></h2><p class="lead">One local story, one campaign and one upcoming event.</p></div><a class="btn navy" href="area.html">Open your local hub</a></div>
+    <div class="grid-3">
+      <article class="card"><div class="card-image" id="localStoryImage"></div><div class="card-body"><h3 id="localStoryTitle"></h3><p id="localStoryText"></p><a class="btn navy" id="localStoryLink" href="news.html">Read more</a></div></article>
+      <article class="card"><div class="card-image" id="localCampaignImage"></div><div class="card-body"><h3 id="localCampaignTitle"></h3><p id="localCampaignText"></p><a class="btn navy" id="localCampaignLink" href="plan.html">Explore campaign</a></div></article>
+      <article class="card"><div class="card-image" id="localEventImage"></div><div class="card-body"><h3 id="localEventTitle"></h3><p id="localEventText"></p><a class="btn navy" id="localEventLink" href="events.html">View event</a></div></article>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container two-col">
+    <div class="photo ratio" style="background-image:url('assets/images/ben-home-intro.jpg')"></div>
+    <div><h2>Practical leadership. Local focus.</h2><p class="lead">The first mayor has a chance to bring the region together around practical priorities while keeping local places and identities at the heart of the job.</p><a class="btn" href="about.html">About Ben</a></div>
+  </div>
+</section>
+<section class="section navy">
+  <div class="container"><div class="section-head"><div><h2>Ben’s plan</h2><p class="lead">Four priorities connecting transport, growth, safety, homes and opportunity.</p></div><a class="btn white" href="plan.html">See the full plan</a></div>
+  <div class="grid-4">
+    <a class="image-card" href="better-transport.html" style="background-image:url('assets/images/ben-plan-hero.jpg')"><h3>Better transport</h3><p>Reliable buses, stronger rail links and better connections.</p></a>
+    <a class="image-card" href="stronger-economy.html" style="background-image:url('assets/images/ben-experience-hero.jpg')"><h3>A stronger economy</h3><p>Back employers, skills and investment.</p></a>
+    <a class="image-card" href="safer-communities.html" style="background-image:url('assets/images/ben-area.jpg')"><h3>Safer communities</h3><p>Confident neighbourhoods and safer streets.</p></a>
+    <a class="image-card" href="homes-opportunity.html" style="background-image:url('assets/images/ben-about-hero.jpg')"><h3>Homes & opportunity</h3><p>The right homes in the right places.</p></a>
+  </div></div>
+</section>
+<section class="section">
+  <div class="container"><div class="section-head"><div><h2>Latest from the campaign</h2><p class="lead">Policy, local visits and the conversations shaping Ben’s campaign.</p></div><a class="btn navy" href="news.html">All news</a></div>
+  <div class="grid-3">
+    <article class="card"><div class="card-image" style="background-image:url('assets/images/ben-news-hero.jpg')"></div><div class="card-body"><h3>A fresh approach to better transport</h3><p>Buses, roads, rail and connecting people to jobs and services.</p><a class="btn navy" href="news.html">Read story</a></div></article>
+    <article class="card"><div class="card-image" style="background-image:url('assets/images/ben-experience-hero.jpg')"></div><div class="card-body"><h3>What local employers want from the new mayor</h3><p>Skills, investment and infrastructure are high on the agenda.</p><a class="btn navy" href="business.html">Read more</a></div></article>
+    <article class="card"><div class="card-image" style="background-image:url('assets/images/ben-events-hero.jpg')"></div><div class="card-body"><h3>A week of conversations across the region</h3><p>What Ben has been hearing locally.</p><a class="btn navy" href="news.html">Read more</a></div></article>
+  </div></div>
+</section>
+<section class="section alt"><div class="container two-col"><div><h2>Help build the campaign</h2><p class="lead">Volunteer locally, bring your network or support the campaign in the way that works for you.</p><div class="hero-actions"><a class="btn" href="volunteer.html">Get involved</a><a class="btn navy" href="donate.html">Donate</a></div></div><div class="photo ratio" style="background-image:url('assets/images/ben-volunteer-hero.jpg')"></div></div></section>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="assets/images/back-ben-for-mayor-logo.png" alt="Back Ben for Mayor of Cheshire and Warrington">
+        <p style="color:#c7d4e2;max-width:300px;font-size:13px;margin-top:16px">A practical campaign for strong leadership, better transport, safer communities and a thriving regional economy.</p>
+      </div>
+      <div><h4>Ben</h4><a href="about.html">About Ben</a><a href="experience.html">Experience</a><a href="plan.html">Ben’s plan</a><a href="hear-from-ben.html">Hear from Ben</a></div>
+      <div><h4>Campaign</h4><a href="area.html">Ben in your area</a><a href="news.html">News</a><a href="events.html">Events</a><a href="business.html">Back Ben for Business</a></div>
+      <div><h4>Get involved</h4><a href="tell-ben.html">Tell Ben</a><a href="volunteer.html">Volunteer</a><a href="donate.html">Donate</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+    </div>
+    <div class="footer-note">Prototype campaign website for Cheshire & Warrington. Demo forms do not submit data.</div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js?v=2"></script>
+</body>
+</html>

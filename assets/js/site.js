@@ -83,7 +83,8 @@
       try{
         const u=new URL(raw,location.href);
         if(area&&!u.searchParams.has("area"))u.searchParams.set("area",area);
-        a.href=u.pathname.split("/").slice(-2).join("/") + u.search + u.hash;
+        const rel = raw.split("?")[0].split("#")[0];
+        a.setAttribute("href", rel + u.search + u.hash);
       }catch(e){}
     });
   }

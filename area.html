@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ben in your area | Back Ben for Mayor</title>
 <meta name="description" content="Ben in your area">
-<link rel="stylesheet" href="assets/css/site.css?v=7">
-<script src="assets/data/areas.js?v=1"></script>
+<link rel="stylesheet" href="assets/css/site.css?v=8">
+<script src="assets/data/areas.js?v=8"></script>
 </head>
-<body data-page="your-area">
-
+<body data-page="area">
 <header class="site-header">
   <div class="container header-inner">
     <a href="index.html" aria-label="Back Ben for Mayor"><span class="header-brand" aria-label="Back Ben for Mayor of Cheshire and Warrington">
@@ -40,14 +39,99 @@
   </div>
 </div>
 
-<section class="page-hero" style="background-image:url('assets/images/ben-area.jpg')"><div class="container"><h1>Ben in your area</h1><p>A regional campaign that feels local. Enter your postcode to surface nearby events, visits and local priorities.</p></div></section>
-<section class="section" id="areaGeneric"><div class="container two-col"><div><h2>Find what’s happening near you</h2><p class="lead">Use your postcode to prioritise local visits, campaign activity and issues relevant to your part of Cheshire & Warrington.</p><form class="area-form" data-area-form><input placeholder="Enter your postcode"><button class="btn" type="submit">Find my area</button></form><p class="form-note">Prototype mapping: CW1 and CW2 → Crewe.</p></div><div class="photo ratio" style="background-image:url('assets/images/ben-area.jpg')"></div></div></section>
-<section class="section alt" id="areaHub" style="display:none"><div class="container"><div class="section-head"><div><h2 id="areaHubTitle">Your local campaign</h2><p class="lead" id="areaHubIntro"></p></div></div><div class="grid-3">
-<div class="card"><div class="card-image" style="background-image:url('assets/images/crewe-hero.jpg')"></div><div class="card-body"><h3>Better transport</h3><p>Connections, bottlenecks and Crewe’s role as a regional gateway.</p><a class="btn navy" href="better-transport.html?area=crewe">Explore</a></div></div>
-<div class="card"><div class="card-image" style="background-image:url('assets/images/ben-events-hero.jpg')"></div><div class="card-body"><h3>Crewe Town Centre Walkabout</h3><p>Meet Ben and the campaign locally.</p><a class="btn navy" href="events.html?area=crewe">View events</a></div></div>
-<div class="card"><div class="card-image" style="background-image:url('assets/images/ben-news-hero.jpg')"></div><div class="card-body"><h3>What Ben is hearing in Crewe</h3><p>Growth, transport and opportunity.</p><a class="btn navy" href="journeys/crewe-story.html?area=crewe">Read more</a></div></div>
-</div></div></section>
 
+
+<section class="page-hero" id="areaPageHero" style="background-image:url('assets/images/ben-area.jpg')">
+  <div class="container">
+    <h1 id="areaHeroTitle">Ben in your area</h1>
+    <p id="areaHeroText">A regional campaign that feels local. Enter your postcode to see nearby news, campaigns, events and what Ben’s plan means where you live.</p>
+  </div>
+</section>
+
+<section class="section" id="areaGeneric">
+  <div class="container two-col">
+    <div>
+      <h2>Find your local campaign</h2>
+      <p class="lead">Use your postcode or choose one of the five main campaign areas below.</p>
+      <form class="area-form" data-area-form>
+        <input placeholder="Enter your postcode">
+        <button class="btn" type="submit">Find my area</button>
+      </form>
+      <p class="form-note">Demo examples: CW1 2AB, CH1 1AA, WA1 1AA, SK10 1AA or CH65 0AA.</p>
+    </div>
+    <div class="photo ratio" style="background-image:url('assets/images/ben-area.jpg')"></div>
+  </div>
+</section>
+
+<section class="section alt" id="areaChooser">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>Across Cheshire & Warrington</h2><p class="lead">Choose an area to see a much more local version of the campaign.</p></div>
+    </div>
+    <div class="area-choice-grid">
+      <button class="image-card area-choice" type="button" data-area-choice="crewe" style="background-image:url('assets/images/crewe-hero.jpg')"><h3>Crewe</h3><p>Transport, town centre and skills.</p></button>
+      <button class="image-card area-choice" type="button" data-area-choice="chester" style="background-image:url('assets/images/ben-about-hero.jpg')"><h3>Chester</h3><p>City centre, transport and growth.</p></button>
+      <button class="image-card area-choice" type="button" data-area-choice="warrington" style="background-image:url('assets/images/ben-experience-hero.jpg')"><h3>Warrington</h3><p>Congestion, business and housing.</p></button>
+      <button class="image-card area-choice" type="button" data-area-choice="macclesfield" style="background-image:url('assets/images/ben-events-hero.jpg')"><h3>Macclesfield</h3><p>Town centre, buses and local business.</p></button>
+      <button class="image-card area-choice" type="button" data-area-choice="ellesmere-port" style="background-image:url('assets/images/ben-plan-hero.jpg')"><h3>Ellesmere Port</h3><p>Industry, skills and regeneration.</p></button>
+    </div>
+  </div>
+</section>
+
+<div id="areaHub" style="display:none">
+  <section class="section compact">
+    <div class="container">
+      <h2 id="areaHubTitle">Your local campaign</h2>
+      <p class="lead" id="areaHubIntro"></p>
+      <p id="areaHubFocus" class="area-focus"></p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head"><div><h2>Latest local news</h2><p class="lead">What Ben is hearing and doing locally.</p></div><a class="btn navy" href="news.html">All news</a></div>
+      <div class="news-grid-fixed" id="areaNewsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><h2>Local campaigns</h2><p class="lead">Specific issues the campaign is highlighting in this area.</p></div></div>
+      <div class="news-grid-fixed" id="areaCampaignGrid"></div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head"><div><h2>What Ben’s plan means here</h2><p class="lead">The four regional priorities, applied locally.</p></div></div>
+      <div class="policy-local-grid" id="areaPolicyGrid"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><h2>Events near you</h2><p class="lead">Meet Ben, ask questions and get involved locally.</p></div><a class="btn navy" href="events.html">All events</a></div>
+      <div class="news-grid-fixed" id="areaEventGrid"></div>
+    </div>
+  </section>
+
+  <section class="section navy">
+    <div class="container two-col">
+      <div>
+        <h2>Tell Ben what matters in <span data-area-name></span></h2>
+        <p class="lead">Local feedback helps shape which issues Ben focuses on and what he asks local organisations to do.</p>
+      </div>
+      <form class="form-grid" data-demo-form="area-survey" data-thanks="thanks.html">
+        <input name="first_name" placeholder="First name">
+        <input name="last_name" placeholder="Last name">
+        <input class="full" name="email" type="email" placeholder="Email address">
+        <input class="full" name="postcode" placeholder="Postcode">
+        <textarea class="full" name="message" placeholder="What should Ben focus on in your area?"></textarea>
+        <button class="btn white full" type="submit">Send to Ben</button>
+      </form>
+    </div>
+  </section>
+</div>
 
 <footer>
   <div class="container">
@@ -63,7 +147,6 @@
     <div class="footer-note">Prototype campaign website for Cheshire & Warrington. Demo forms do not submit data.</div>
   </div>
 </footer>
-
-<script src="assets/js/site.js?v=6"></script>
+<script src="assets/js/site.js?v=8"></script>
 </body>
 </html>

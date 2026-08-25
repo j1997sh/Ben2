@@ -636,3 +636,73 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
 @media(max-width:650px){
   .event-card-grid{grid-template-columns:1fr}
 }
+
+
+
+/* V8 populated area hubs */
+.area-choice-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:14px;
+}
+.area-choice{
+  border:0;
+  text-align:left;
+  cursor:pointer;
+  font:inherit;
+  min-height:280px;
+}
+.area-focus{
+  margin:14px 0 0;
+  padding:16px 18px;
+  border-left:4px solid var(--blue);
+  background:var(--alt);
+  color:var(--navy);
+  font-weight:800;
+}
+.policy-local-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.policy-local-card{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:18px;
+  align-items:center;
+  padding:16px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+.policy-local-image{
+  min-height:125px;
+  background-size:cover;
+  background-position:center;
+}
+.policy-local-card h3{
+  margin:0 0 6px;
+  font-size:24px;
+  line-height:1.05;
+  color:var(--navy);
+}
+.policy-local-card p{
+  margin:0 0 10px;
+  color:var(--muted);
+  font-size:14px;
+}
+.policy-local-card a{
+  color:var(--blue);
+  font-weight:800;
+}
+@media(max-width:1100px){
+  .area-choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:800px){
+  .area-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .policy-local-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .area-choice-grid{grid-template-columns:1fr}
+  .policy-local-card{grid-template-columns:1fr}
+  .policy-local-image{min-height:200px}
+}

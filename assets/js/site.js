@@ -1,24 +1,129 @@
 
 (function(){
   const AREAS = window.BEN_CAMPAIGN_AREAS || {};
-  const postcodeMap = [
-    [/^CW1|^CW2/i,"crewe"]
-  ];
+  const postcodeMap = Object.keys(AREAS).filter(k=>k!=="regional").flatMap(function(key){
+    return (AREAS[key].postcodePrefixes || []).map(function(prefix){
+      return [new RegExp("^"+prefix,"i"), key];
+    });
+  });
   const localData = {
-    crewe:{
-      name:"Crewe",
-      story:["What Ben is hearing in Crewe","Growth, infrastructure and what local people want from the new mayor.","assets/images/crewe-hero.jpg","journeys/crewe-story.html"],
-      campaign:["Better transport for Crewe","Better bus connections, tackling bottlenecks and backing Crewe’s role as a gateway for the region.","assets/images/crewe-hero.jpg","better-transport.html?area=crewe&issue=transport"],
-      event:["Crewe Town Centre Walkabout","25 September · 10:30am · Market Square, Crewe","assets/images/ben-events-hero.jpg","events.html?area=crewe"]
-    }
-  };
+  "crewe": {
+    "name": "Crewe",
+    "story": [
+      "Crewe’s transport links must work for local people",
+      "Ben sets out why buses, roads and rail need to be planned together around everyday journeys.",
+      "assets/images/crewe-hero.jpg",
+      "area.html?area=crewe"
+    ],
+    "campaign": [
+      "Fix Crewe’s transport bottlenecks",
+      "A local campaign for better junctions, bus reliability and stronger connections.",
+      "better-transport.html?area=crewe&issue=transport",
+      "assets/images/ben-home-intro.jpg"
+    ],
+    "event": [
+      "Crewe Town Centre Walkabout",
+      "25 September · 10:30am · Market Square",
+      "assets/images/crewe-hero.jpg",
+      "events.html?area=crewe"
+    ]
+  },
+  "chester": {
+    "name": "Chester",
+    "story": [
+      "Ben meets city-centre businesses in Chester",
+      "Retail, tourism and footfall are at the heart of a discussion about the future of the city centre.",
+      "assets/images/ben-about-hero.jpg",
+      "area.html?area=chester"
+    ],
+    "campaign": [
+      "Protect Chester’s city-centre vitality",
+      "Back local businesses, tourism and a stronger plan for the city centre.",
+      "stronger-economy.html?area=chester&issue=economy",
+      "assets/images/ben-area.jpg"
+    ],
+    "event": [
+      "Chester: Homes, Towns & Opportunity",
+      "2 October · 7:00pm · Chester",
+      "assets/images/ben-about-hero.jpg",
+      "events.html?area=chester"
+    ]
+  },
+  "warrington": {
+    "name": "Warrington",
+    "story": [
+      "What Warrington businesses want from the new mayor",
+      "Employers highlight congestion, skills and the need for faster infrastructure delivery.",
+      "assets/images/ben-experience-hero.jpg",
+      "area.html?area=warrington"
+    ],
+    "campaign": [
+      "Cut Warrington congestion",
+      "Target the junctions and corridors that waste residents’ and businesses’ time.",
+      "better-transport.html?area=warrington&issue=transport",
+      "assets/images/ben-plan-hero.jpg"
+    ],
+    "event": [
+      "Warrington Business Breakfast",
+      "28 September · 8:00am · Central Warrington",
+      "assets/images/ben-experience-hero.jpg",
+      "events.html?area=warrington"
+    ]
+  },
+  "macclesfield": {
+    "name": "Macclesfield",
+    "story": [
+      "Ben talks town-centre renewal in Macclesfield",
+      "Local traders and residents discuss footfall, empty units and how the mayor can support stronger high streets.",
+      "assets/images/ben-events-hero.jpg",
+      "area.html?area=macclesfield"
+    ],
+    "campaign": [
+      "Revive Macclesfield town centre",
+      "Back practical regeneration and stronger local high streets.",
+      "stronger-economy.html?area=macclesfield&issue=economy",
+      "assets/images/ben-plan-hero.jpg"
+    ],
+    "event": [
+      "Macclesfield Doorstep Session",
+      "30 September · 5:30pm · Macclesfield",
+      "assets/images/ben-volunteer-hero.jpg",
+      "events.html?area=macclesfield"
+    ]
+  },
+  "ellesmere-port": {
+    "name": "Ellesmere Port",
+    "story": [
+      "Ellesmere Port can lead the region’s industrial future",
+      "Ben visits local employers to discuss manufacturing, energy and investment.",
+      "assets/images/ben-experience-hero.jpg",
+      "area.html?area=ellesmere-port"
+    ],
+    "campaign": [
+      "Back Ellesmere Port industry",
+      "Make the area a priority for investment, advanced manufacturing and clean energy.",
+      "stronger-economy.html?area=ellesmere-port&issue=economy",
+      "assets/images/ben-home-intro.jpg"
+    ],
+    "event": [
+      "Skills & Apprenticeships Forum",
+      "9 October · 4:00pm · Ellesmere Port",
+      "assets/images/ben-plan-hero.jpg",
+      "events.html?area=ellesmere-port"
+    ]
+  }
+};
 
   function resolveArea(value){
     if(!value) return "";
     const v=value.trim();
     if(AREAS[v]) return v;
     for(const [rx,key] of postcodeMap){ if(rx.test(v)) return key; }
-    if(v.toLowerCase().includes("crewe")) return "crewe";
+    const lower=v.toLowerCase();
+    for(const key of Object.keys(AREAS)){
+      if(key==="regional") continue;
+      if(lower.includes((AREAS[key].name||"").toLowerCase())) return key;
+    }
     return "";
   }
   function getArea(){
@@ -44,6 +149,60 @@
     const data={}; keys.forEach(k=>{if(p.get(k))data[k]=p.get(k)});
     if(Object.keys(data).length) try{sessionStorage.setItem("benSource",JSON.stringify(data))}catch(e){}
   }
+
+  function renderAreaHub(key){
+    const area=AREAS[key];
+    const hub=(window.BEN_AREA_HUBS||{})[key];
+    if(!area||!hub) return;
+
+    const hero=document.getElementById("areaPageHero");
+    if(hero && area.heroImage) hero.style.backgroundImage='url("'+area.heroImage+'")';
+    const heroTitle=document.getElementById("areaHeroTitle");
+    const heroText=document.getElementById("areaHeroText");
+    if(heroTitle) heroTitle.textContent="Ben in "+area.name;
+    if(heroText) heroText.textContent=area.heroSupport || "";
+
+    const generic=document.getElementById("areaGeneric");
+    const chooser=document.getElementById("areaChooser");
+    renderAreaHub(key);
+
+
+    const news=document.getElementById("areaNewsGrid");
+    if(news){
+      news.innerHTML=hub.news.map(function(n){
+        return card(n[2],n[0],n[1],"news.html?area="+key,"Read story");
+      }).join("");
+    }
+
+    const campaigns=document.getElementById("areaCampaignGrid");
+    if(campaigns){
+      campaigns.innerHTML=hub.campaigns.map(function(c,i){
+        const image=(hub.news[i%hub.news.length]||hub.news[0])[2];
+        return card(image,c[0],c[1],c[3]+"?area="+key+"&issue="+c[2],"Explore campaign");
+      }).join("");
+    }
+
+    const policy=document.getElementById("areaPolicyGrid");
+    if(policy){
+      const policies=[
+        ["Better transport","How buses, roads and rail can work better for "+area.name+".","better-transport.html","assets/images/ben-plan-hero.jpg"],
+        ["A stronger economy","Jobs, skills and investment priorities for "+area.name+".","stronger-economy.html","assets/images/ben-experience-hero.jpg"],
+        ["Safer communities","Neighbourhood confidence and practical local safety.","safer-communities.html","assets/images/ben-area.jpg"],
+        ["Homes & opportunity","Growth, infrastructure and the places people live.","homes-opportunity.html","assets/images/ben-about-hero.jpg"]
+      ];
+      policy.innerHTML=policies.map(function(p){
+        return `<article class="policy-local-card"><div class="policy-local-image" style="background-image:url('${p[3]}')"></div><div><h3>${p[0]}</h3><p>${p[1]}</p><a href="${p[2]}?area=${key}">Read the policy</a></div></article>`;
+      }).join("");
+    }
+
+    const events=document.getElementById("areaEventGrid");
+    if(events){
+      events.innerHTML=hub.events.map(function(e){
+        return card(e[2],e[0],e[1],"events.html?area="+key,"View event");
+      }).join("");
+    }
+  }
+
   function applyArea(key){
     const a=AREAS[key]; if(!a) return;
     document.documentElement.dataset.area=key;
@@ -143,6 +302,20 @@
   initAreaForms();
   initForms();
   initChips();
+
+  document.querySelectorAll("[data-area-choice]").forEach(function(button){
+    button.addEventListener("click",function(){
+      const key=button.dataset.areaChoice;
+      if(!AREAS[key]) return;
+      setArea(key,true);
+      const u=new URL(location.href);
+      u.searchParams.set("area",key);
+      history.replaceState({}, "", u);
+      renderAreaHub(key);
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+  });
+
   const area=getArea(); if(area&&AREAS[area])applyArea(area);
   document.getElementById("clearArea")?.addEventListener("click",clearArea);
 })();

@@ -446,3 +446,193 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
   .header-brand{width:104px;min-width:104px}
   .header-brand .brand-ben{font-size:29px}
 }
+
+
+
+/* V6 editorial plan detail pages */
+.plan-editorial-intro{
+  padding:74px 0;
+}
+.plan-editorial-intro .intro-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:60px;
+  align-items:center;
+}
+.plan-editorial-intro h2{
+  margin:0 0 16px;
+  font-size:clamp(42px,4.8vw,62px);
+  line-height:.97;
+  letter-spacing:-.05em;
+}
+.plan-editorial-intro p{
+  margin:0 0 16px;
+  max-width:680px;
+  font-size:18px;
+  color:var(--muted);
+}
+.plan-editorial-photo{
+  min-height:430px;
+  background-size:cover;
+  background-position:center;
+}
+
+.policy-point{
+  padding:72px 0;
+  border-top:1px solid var(--line);
+}
+.policy-point.alt{background:var(--alt)}
+.policy-point-inner{
+  display:grid;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  gap:58px;
+  align-items:center;
+}
+.policy-point.reverse .policy-point-copy{order:2}
+.policy-point.reverse .policy-point-image{order:1}
+.policy-point-copy h2{
+  margin:0 0 15px;
+  font-size:clamp(38px,4.2vw,56px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+.policy-point-copy p{
+  margin:0 0 15px;
+  font-size:17px;
+  color:var(--muted);
+  max-width:670px;
+}
+.policy-point-copy .point-number{
+  display:block;
+  margin-bottom:16px;
+  font-size:54px;
+  line-height:.8;
+  font-weight:900;
+  color:var(--blue);
+  letter-spacing:-.05em;
+}
+.policy-point-image{
+  min-height:350px;
+  background-size:cover;
+  background-position:center;
+}
+
+.survey-section{
+  padding:72px 0;
+  background:var(--navy);
+  color:#fff;
+}
+.survey-section h2{
+  color:#fff;
+  margin:0 0 12px;
+  font-size:clamp(40px,4.5vw,58px);
+  line-height:.98;
+}
+.survey-section .survey-intro{
+  max-width:720px;
+  margin:0 0 28px;
+  color:#c7d4e2;
+  font-size:18px;
+}
+.survey-layout{
+  display:grid;
+  grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  gap:52px;
+  align-items:start;
+}
+.survey-question{
+  margin:0 0 18px;
+  font-size:26px;
+  line-height:1.1;
+  color:#fff;
+}
+.survey-options{
+  display:grid;
+  gap:9px;
+}
+.survey-choice{
+  position:relative;
+}
+.survey-choice input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.survey-choice label{
+  display:block;
+  padding:15px 16px;
+  border:1px solid rgba(255,255,255,.38);
+  color:#fff;
+  background:transparent;
+  cursor:pointer;
+  font-weight:800;
+}
+.survey-choice input:checked + label{
+  background:#fff;
+  color:var(--navy);
+  border-color:#fff;
+}
+.survey-section input,
+.survey-section textarea{
+  border-color:rgba(255,255,255,.45);
+}
+.survey-section .form-note{color:#9eb1c7}
+.survey-section .checkbox-row{color:#c7d4e2}
+.survey-section .checkbox-row input{
+  width:auto;
+  min-height:auto;
+}
+.plan-next{
+  padding:58px 0;
+}
+.plan-next-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.plan-next h2{
+  margin:0;
+  font-size:36px;
+}
+
+@media(max-width:800px){
+  .plan-editorial-intro .intro-grid,
+  .policy-point-inner,
+  .survey-layout{grid-template-columns:1fr;gap:28px}
+  .policy-point.reverse .policy-point-copy,
+  .policy-point.reverse .policy-point-image{order:initial}
+  .plan-editorial-photo,.policy-point-image{min-height:280px}
+}
+@media(max-width:650px){
+  .plan-next-inner{display:block}
+  .plan-next .btn{margin-top:16px}
+}
+
+
+
+/* V7 event cards use the same grid language as News */
+.event-card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+  align-items:stretch;
+}
+.event-card-grid .event-card{
+  height:100%;
+}
+.event-card-grid .card-image{
+  aspect-ratio:1.55/1;
+}
+.event-card-date{
+  margin-bottom:8px;
+  color:var(--blue);
+  font-size:13px;
+  font-weight:900;
+}
+@media(max-width:1000px){
+  .event-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+  .event-card-grid{grid-template-columns:1fr}
+}

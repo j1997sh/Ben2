@@ -110,7 +110,21 @@
         if(pc){const area=resolveArea(pc.value); if(area)setArea(area,true)}
         try{
           const source=JSON.parse(sessionStorage.getItem("benSource")||"{}");
-          sessionStorage.setItem("lastBenAction",JSON.stringify({type:form.dataset.demoForm,source,area:getArea()}));
+          const fields={};
+          new FormData(form).forEach((value,key)=>{
+            if(fields[key]!==undefined){
+              if(!Array.isArray(fields[key])) fields[key]=[fields[key]];
+              fields[key].push(value);
+            }else{
+              fields[key]=value;
+            }
+          });
+          sessionStorage.setItem("lastBenAction",JSON.stringify({
+            type:form.dataset.demoForm,
+            source,
+            area:getArea(),
+            fields
+          }));
         }catch(e){}
         location.href=(form.dataset.thanks||"thanks.html");
       });

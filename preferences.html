@@ -1,16 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Thanks | Back Ben for Mayor</title>
-<meta name="description" content="Thanks">
+<title>Email preferences | Back Ben for Mayor</title>
+<meta name="description" content="About Ben">
 <link rel="stylesheet" href="assets/css/site.css?v=10">
 <script src="assets/data/areas.js?v=10"></script>
-</head>
-<body data-page="">
-
-<header class="site-header">
+</head><body><header class="site-header">
   <div class="container header-inner">
     <a href="index.html" aria-label="Back Ben for Mayor"><span class="header-brand" aria-label="Back Ben for Mayor of Cheshire and Warrington">
   <span class="brand-back">BACK</span>
@@ -18,7 +13,7 @@
   <span class="brand-for">FOR MAYOR</span>
   <span class="brand-region">OF CHESHIRE AND WARRINGTON</span>
 </span></a>
-    <nav class="nav"><a class="" href="index.html">Home</a><a class="" href="about.html">About Ben</a><a class="" href="plan.html">Ben’s plan</a><a class="" href="area.html">Your area</a><a class="" href="news.html">News</a><a class="" href="events.html">Events</a><a class="" href="tell-ben.html">Tell Ben</a></nav>
+    <nav class="nav"><a class="" href="index.html">Home</a><a class="active" href="about.html">About Ben</a><a class="" href="plan.html">Ben’s plan</a><a class="" href="area.html">Your area</a><a class="" href="news.html">News</a><a class="" href="events.html">Events</a><a class="" href="tell-ben.html">Tell Ben</a></nav>
     <div class="header-actions">
       <a class="header-box volunteer" href="volunteer.html">Get involved</a>
       <a class="header-box donate" href="donate.html">Donate</a>
@@ -40,8 +35,15 @@
   </div>
 </div>
 
-<section class="section"><div class="container" style="max-width:980px"><div class="confirmation"><h2 style="margin-top:0">Thanks — we’ve got it.</h2><p>In the live campaign this action would now be recorded and the next step tailored to what you just did.</p></div><div class="grid-3" style="margin-top:24px"><div class="card"><div class="card-body"><h3>See what’s happening near you</h3><p>Local news, events and priorities.</p><a class="btn navy" href="area.html">Open local hub</a></div></div><div class="card"><div class="card-body"><h3>See Ben’s plan</h3><p>Explore the priorities behind the campaign.</p><a class="btn navy" href="plan.html">View the plan</a></div></div><div class="card"><div class="card-body"><h3>Get involved locally</h3><p>Choose a way to help that works for you.</p><a class="btn navy" href="volunteer.html">Get involved</a></div></div></div></div></section>
-
+<section class="page-hero" style="background-image:url('assets/images/ben-home-intro.jpg')"><div class="container"><h1>Your updates</h1><p>Choose what you want to hear about from Ben’s campaign.</p></div></section>
+<section class="section"><div class="container preference-wrap"><h2>Choose your updates</h2><p class="lead" id="prefIntro">You’re in control of what the campaign sends you.</p><form id="preferencesForm">
+<div class="preference-grid-v10">
+<div class="preference-card"><input id="prefArea" name="area_updates" type="checkbox" checked><label for="prefArea"><strong id="prefAreaTitle">Updates from your area</strong><span>Local news, campaigns and events.</span></label></div>
+<div class="preference-card"><input id="prefPlan" name="plan" type="checkbox" checked><label for="prefPlan"><strong>Ben’s plan</strong><span>Policy announcements and progress on Ben’s priorities.</span></label></div>
+<div class="preference-card"><input id="prefEvents" name="events" type="checkbox"><label for="prefEvents"><strong>Events</strong><span>Invitations to public meetings, visits and campaign events.</span></label></div>
+<div class="preference-card"><input id="prefCampaigns" name="campaigns" type="checkbox"><label for="prefCampaigns"><strong>Campaign updates</strong><span>Local and regional campaigns you can support.</span></label></div>
+<div class="preference-card"><input id="prefMonthly" name="monthly" type="checkbox" checked><label for="prefMonthly"><strong>Monthly update</strong><span>A regular roundup from Ben and the campaign.</span></label></div>
+</div><button class="btn" type="submit">Save my preferences</button><span id="prefSaved" style="display:none;margin-left:12px;font-weight:800">Saved.</span></form></div></section>
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -55,8 +57,4 @@
     </div>
     <div class="footer-note">Prototype campaign website for Cheshire & Warrington. Demo forms do not submit data.</div>
   </div>
-</footer>
-
-<script src="assets/js/site.js?v=10"></script>
-</body>
-</html>
+</footer><script src="assets/js/site.js?v=10"></script></body></html>

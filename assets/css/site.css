@@ -388,3 +388,61 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
 @media(max-width:650px){
   .news-grid-fixed,.volunteer-grid-fixed{grid-template-columns:1fr}
 }
+
+
+/* V5 hero crop + clean header brand */
+.home-hero{
+  background-position:center 12% !important;
+}
+
+/* White-header version of the campaign mark — no navy box */
+.header-brand{
+  width:118px;
+  min-width:118px;
+  color:var(--navy);
+  line-height:.82;
+  display:block;
+  text-align:left;
+  font-weight:900;
+  letter-spacing:-.04em;
+}
+.header-brand .brand-back{
+  display:inline-block;
+  margin-left:8px;
+  margin-bottom:2px;
+  padding:2px 5px 3px;
+  border:2px solid var(--navy);
+  background:#fff;
+  font-size:8px;
+  line-height:1;
+  transform:rotate(-2deg);
+  letter-spacing:.02em;
+}
+.header-brand .brand-ben{
+  display:block;
+  font-size:33px;
+  line-height:.72;
+}
+.header-brand .brand-for{
+  display:block;
+  margin-top:5px;
+  font-size:12px;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.header-brand .brand-region{
+  display:inline-block;
+  margin-top:4px;
+  padding:3px 4px 2px;
+  background:#e6382f;
+  color:#fff;
+  font-size:5.8px;
+  line-height:1;
+  letter-spacing:0;
+  white-space:nowrap;
+}
+@media(max-width:650px){
+  .home-hero{background-position:60% 10% !important}
+  .header-brand{width:104px;min-width:104px}
+  .header-brand .brand-ben{font-size:29px}
+}

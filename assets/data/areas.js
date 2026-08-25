@@ -355,3 +355,91 @@ window.BEN_AREA_HUBS = {
     ]
   }
 };
+
+window.BEN_AREA_LINKS = {
+  "crewe": {
+    "news": [
+      "news/crewes-transport-links-must-work-for-local-people.html",
+      "news/what-traders-are-telling-ben-about-crewe-town-centre.html",
+      "news/skills-and-opportunity-the-crewe-conversation.html"
+    ],
+    "campaigns": [
+      "campaigns/crewe-fix-crewes-transport-bottlenecks.html",
+      "campaigns/crewe-back-crewe-town-centre.html",
+      "campaigns/crewe-skills-for-crewes-next-generation.html"
+    ],
+    "events": [
+      "events/crewe-town-centre-walkabout.html",
+      "events/crewe-transport-qanda.html",
+      "events/crewe-business-and-skills-roundtable.html"
+    ]
+  },
+  "chester": {
+    "news": [
+      "news/ben-meets-city-centre-businesses-in-chester.html",
+      "news/housing-and-infrastructure-getting-the-balance-right.html",
+      "news/a-stronger-regional-voice-for-chester.html"
+    ],
+    "campaigns": [
+      "campaigns/chester-protect-chesters-city-centre-vitality.html",
+      "campaigns/chester-infrastructure-before-growth.html",
+      "campaigns/chester-better-connections-into-chester.html"
+    ],
+    "events": [
+      "events/chester-homes-towns-and-opportunity.html",
+      "events/chester-city-centre-walkabout.html",
+      "events/chester-transport-and-tourism-roundtable.html"
+    ]
+  },
+  "warrington": {
+    "news": [
+      "news/what-warrington-businesses-want-from-the-new-mayor.html",
+      "news/ben-warrington-cannot-keep-losing-time-to-congestion.html",
+      "news/growth-needs-infrastructure-first.html"
+    ],
+    "campaigns": [
+      "campaigns/warrington-cut-warrington-congestion.html",
+      "campaigns/warrington-back-warrington-business.html",
+      "campaigns/warrington-plan-homes-with-infrastructure.html"
+    ],
+    "events": [
+      "events/warrington-business-breakfast.html",
+      "events/warrington-transport-forum.html",
+      "events/warrington-growth-and-homes-qanda.html"
+    ]
+  },
+  "macclesfield": {
+    "news": [
+      "news/ben-talks-town-centre-renewal-in-macclesfield.html",
+      "news/better-buses-for-east-cheshire.html",
+      "news/supporting-small-businesses-and-local-skills.html"
+    ],
+    "campaigns": [
+      "campaigns/macclesfield-revive-macclesfield-town-centre.html",
+      "campaigns/macclesfield-better-buses-for-east-cheshire.html",
+      "campaigns/macclesfield-safer-streets-in-macclesfield.html"
+    ],
+    "events": [
+      "events/macclesfield-doorstep-session.html",
+      "events/macclesfield-town-centre-walkabout.html",
+      "events/east-cheshire-transport-meeting.html"
+    ]
+  },
+  "ellesmere-port": {
+    "news": [
+      "news/ellesmere-port-can-lead-the-regions-industrial-future.html",
+      "news/skills-must-keep-pace-with-new-investment.html",
+      "news/better-transport-to-jobs-and-training.html"
+    ],
+    "campaigns": [
+      "campaigns/ellesmere-port-back-ellesmere-port-industry.html",
+      "campaigns/ellesmere-port-skills-for-the-jobs-coming-next.html",
+      "campaigns/ellesmere-port-connect-people-to-jobs.html"
+    ],
+    "events": [
+      "events/skills-and-apprenticeships-forum.html",
+      "events/industrial-growth-roundtable.html",
+      "events/ellesmere-port-community-qanda.html"
+    ]
+  }
+};

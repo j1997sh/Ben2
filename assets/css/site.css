@@ -732,3 +732,39 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
 #eventsAllGrid[style*="display: none"]{
   display:none!important;
 }
+
+
+/* V10 full supporter journeys */
+.home-local-grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.article-shell{max-width:860px;margin:0 auto}
+.article-shell .standfirst{font-size:22px;line-height:1.45;color:var(--muted);margin:0 0 28px}
+.article-shell p{font-size:18px;line-height:1.7;margin:0 0 22px}
+.article-shell h2{font-size:38px;margin:40px 0 14px}
+.article-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;color:var(--muted);font-size:13px;font-weight:800}
+.related-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.event-detail-meta{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-bottom:34px}
+.event-detail-meta div{padding:18px;border-right:1px solid var(--line)}
+.event-detail-meta div:last-child{border-right:0}
+.event-detail-meta strong{display:block;color:var(--navy);font-size:13px}
+.event-map{min-height:300px;display:flex;align-items:flex-end;padding:24px;background:linear-gradient(180deg,rgba(8,37,74,.04),rgba(8,37,74,.8)),url('../assets/images/ben-area.jpg') center/cover no-repeat;color:#fff}
+.event-map h3{color:#fff;margin:0 0 6px;font-size:28px}
+.campaign-editorial{max-width:900px}
+.campaign-editorial p{font-size:18px;line-height:1.7;color:var(--muted)}
+.campaign-ask{padding:28px;background:var(--alt);border-left:5px solid var(--blue);margin:30px 0}
+.thanks-shell{max-width:1050px;margin:0 auto}
+.thanks-confirm{padding:30px;background:var(--alt);border-left:5px solid var(--blue);margin-bottom:24px}
+.thanks-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.preference-wrap{max-width:900px;margin:0 auto}
+.preference-grid-v10{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.preference-card{position:relative}
+.preference-card input{position:absolute;opacity:0;pointer-events:none}
+.preference-card label{display:block;min-height:120px;padding:20px;border:1px solid var(--line);cursor:pointer;background:#fff}
+.preference-card label strong{display:block;font-size:21px;color:var(--navy);margin-bottom:6px}
+.preference-card label span{color:var(--muted);font-size:14px}
+.preference-card input:checked + label{border-color:var(--blue);background:#f2f7fd}
+.source-context{display:none;background:#eef5fc;border-bottom:1px solid #d8e5f2;color:var(--navy)}
+.source-context.visible{display:block}
+.source-context .container{padding-top:9px;padding-bottom:9px;font-size:12px;font-weight:800}
+@media(max-width:1000px){.home-local-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.event-detail-meta,.thanks-grid,.related-strip,.preference-grid-v10{grid-template-columns:1fr}.event-detail-meta div{border-right:0;border-bottom:1px solid var(--line)}.event-detail-meta div:last-child{border-bottom:0}}
+@media(max-width:650px){.home-local-grid-4{grid-template-columns:1fr}}

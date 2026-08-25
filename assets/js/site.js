@@ -310,11 +310,11 @@
         const el=document.getElementById(pair[0]);
         if(el) el.textContent=pair[1];
       });
-      [["localStoryImage",data.story[2]],["localCampaignImage",data.campaign[2]],["localEventImage",data.event[2]]].forEach(function(pair){
+      [["localStoryImage",data.story[2]],["localCampaignImage",data.campaign[3]],["localEventImage",data.event[2]]].forEach(function(pair){
         const el=document.getElementById(pair[0]);
         if(el) el.style.backgroundImage=`url("${pair[1]}")`;
       });
-      [["localStoryLink",data.story[3]],["localCampaignLink",data.campaign[3]],["localEventLink",data.event[3]]].forEach(function(pair){
+      [["localStoryLink",data.story[3]],["localCampaignLink",data.campaign[2]],["localEventLink",data.event[3]]].forEach(function(pair){
         const el=document.getElementById(pair[0]);
         if(el) el.href=pair[1];
       });

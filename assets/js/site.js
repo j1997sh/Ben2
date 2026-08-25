@@ -150,13 +150,25 @@
     if(Object.keys(data).length) try{sessionStorage.setItem("benSource",JSON.stringify(data))}catch(e){}
   }
 
+  function areaCard(image,title,copy,href,button){
+    return `<article class="card">
+      <div class="card-image" style="background-image:url('${image}')"></div>
+      <div class="card-body">
+        <h3>${title}</h3>
+        <p>${copy}</p>
+        <a class="btn navy" href="${href}">${button}</a>
+      </div>
+    </article>`;
+  }
+
   function renderAreaHub(key){
     const area=AREAS[key];
     const hub=(window.BEN_AREA_HUBS||{})[key];
     if(!area||!hub) return;
 
     const hero=document.getElementById("areaPageHero");
-    if(hero && area.heroImage) hero.style.backgroundImage='url("'+area.heroImage+'")';
+    if(hero && area.heroImage) hero.style.backgroundImage=`url("${area.heroImage}")`;
+
     const heroTitle=document.getElementById("areaHeroTitle");
     const heroText=document.getElementById("areaHeroText");
     if(heroTitle) heroTitle.textContent="Ben in "+area.name;
@@ -164,76 +176,155 @@
 
     const generic=document.getElementById("areaGeneric");
     const chooser=document.getElementById("areaChooser");
-    renderAreaHub(key);
+    const areaHub=document.getElementById("areaHub");
+    if(generic) generic.style.display="none";
+    if(chooser) chooser.style.display="none";
+    if(areaHub) areaHub.style.display="block";
 
+    const title=document.getElementById("areaHubTitle");
+    const intro=document.getElementById("areaHubIntro");
+    const focus=document.getElementById("areaHubFocus");
+    if(title) title.textContent="The campaign in "+area.name;
+    if(intro) intro.textContent=area.heroSupport || "";
+    if(focus) focus.textContent=area.localFocus ? "Local focus: "+area.localFocus : "";
 
     const news=document.getElementById("areaNewsGrid");
     if(news){
-      news.innerHTML=hub.news.map(function(n){
-        return card(n[2],n[0],n[1],"news.html?area="+key,"Read story");
+      news.innerHTML=(hub.news||[]).map(function(n){
+        return areaCard(n[2],n[0],n[1],`news.html?area=${key}`,"Read story");
       }).join("");
     }
 
     const campaigns=document.getElementById("areaCampaignGrid");
     if(campaigns){
-      campaigns.innerHTML=hub.campaigns.map(function(c,i){
-        const image=(hub.news[i%hub.news.length]||hub.news[0])[2];
-        return card(image,c[0],c[1],c[3]+"?area="+key+"&issue="+c[2],"Explore campaign");
+      campaigns.innerHTML=(hub.campaigns||[]).map(function(c,i){
+        const image=((hub.news||[])[i % Math.max((hub.news||[]).length,1)] || [null,null,"assets/images/ben-area.jpg"])[2];
+        return areaCard(image,c[0],c[1],`${c[3]}?area=${key}&issue=${c[2]}`,"Explore campaign");
       }).join("");
     }
 
     const policy=document.getElementById("areaPolicyGrid");
     if(policy){
       const policies=[
-        ["Better transport","How buses, roads and rail can work better for "+area.name+".","better-transport.html","assets/images/ben-plan-hero.jpg"],
-        ["A stronger economy","Jobs, skills and investment priorities for "+area.name+".","stronger-economy.html","assets/images/ben-experience-hero.jpg"],
-        ["Safer communities","Neighbourhood confidence and practical local safety.","safer-communities.html","assets/images/ben-area.jpg"],
-        ["Homes & opportunity","Growth, infrastructure and the places people live.","homes-opportunity.html","assets/images/ben-about-hero.jpg"]
+        ["Better transport",`How buses, roads and rail can work better for ${area.name}.`,"better-transport.html","assets/images/ben-plan-hero.jpg"],
+        ["A stronger economy",`Jobs, skills and investment priorities for ${area.name}.`,"stronger-economy.html","assets/images/ben-experience-hero.jpg"],
+        ["Safer communities",`Neighbourhood confidence and practical local safety in ${area.name}.`,"safer-communities.html","assets/images/ben-area.jpg"],
+        ["Homes & opportunity",`Growth, infrastructure and the places people live in ${area.name}.`,"homes-opportunity.html","assets/images/ben-about-hero.jpg"]
       ];
       policy.innerHTML=policies.map(function(p){
-        return `<article class="policy-local-card"><div class="policy-local-image" style="background-image:url('${p[3]}')"></div><div><h3>${p[0]}</h3><p>${p[1]}</p><a href="${p[2]}?area=${key}">Read the policy</a></div></article>`;
+        return `<article class="policy-local-card">
+          <div class="policy-local-image" style="background-image:url('${p[3]}')"></div>
+          <div>
+            <h3>${p[0]}</h3>
+            <p>${p[1]}</p>
+            <a href="${p[2]}?area=${key}">Read the policy</a>
+          </div>
+        </article>`;
       }).join("");
     }
 
     const events=document.getElementById("areaEventGrid");
     if(events){
-      events.innerHTML=hub.events.map(function(e){
-        return card(e[2],e[0],e[1],"events.html?area="+key,"View event");
+      events.innerHTML=(hub.events||[]).map(function(e){
+        const image=e[2] || "assets/images/ben-events-hero.jpg";
+        return areaCard(image,e[0],e[1],`events.html?area=${key}`,"View event");
       }).join("");
     }
+  }
+
+  function splitAreaContent(key){
+    const area=AREAS[key];
+    if(!area) return;
+
+    [
+      {source:"newsAllGrid",local:"newsLocalGrid",rest:"newsRestGrid",section:"newsLocalSection",title:"newsLocalTitle"},
+      {source:"eventsAllGrid",local:"eventsLocalGrid",rest:"eventsRestGrid",section:"eventsLocalSection",title:"eventsLocalTitle"}
+    ].forEach(function(cfg){
+      const source=document.getElementById(cfg.source);
+      const local=document.getElementById(cfg.local);
+      const rest=document.getElementById(cfg.rest);
+      const section=document.getElementById(cfg.section);
+      if(!source||!local||!rest||!section) return;
+
+      const cards=Array.from(source.children);
+      local.innerHTML="";
+      rest.innerHTML="";
+
+      cards.forEach(function(card){
+        card.querySelectorAll(".area-card-badge").forEach(function(b){b.remove()});
+        const clone=card.cloneNode(true);
+        if(card.dataset.area===key){
+          const body=clone.querySelector(".card-body");
+          if(body){
+            const badge=document.createElement("div");
+            badge.className="area-card-badge";
+            badge.textContent="In "+area.name;
+            body.insertBefore(badge,body.firstChild);
+          }
+          local.appendChild(clone);
+        } else {
+          rest.appendChild(clone);
+        }
+      });
+
+      if(local.children.length){
+        section.style.display="";
+        const heading=document.getElementById(cfg.title);
+        if(heading) heading.textContent=(cfg.source==="newsAllGrid" ? "Latest from " : "Events in ")+area.name;
+      }
+      source.style.display="none";
+    });
+
+    const newsRestHeading=document.getElementById("newsRestTitle");
+    if(newsRestHeading) newsRestHeading.textContent="More from across Cheshire & Warrington";
+    const eventRestHeading=document.getElementById("eventsRestTitle");
+    if(eventRestHeading) eventRestHeading.textContent="More events across Cheshire & Warrington";
   }
 
   function applyArea(key){
     const a=AREAS[key]; if(!a) return;
     document.documentElement.dataset.area=key;
+
     const status=document.getElementById("localStatus");
     const name=document.getElementById("localStatusName");
-    if(status&&name){name.textContent=a.name;status.classList.add("visible")}
-    document.querySelectorAll("[data-area-name]").forEach(el=>el.textContent=a.name);
-    document.querySelectorAll("[data-area-copy]").forEach(el=>el.textContent=(el.dataset.areaCopy||"").replace(/\{area\}/g,a.name));
+    if(status&&name){
+      name.textContent=a.name;
+      status.classList.add("visible");
+    }
+
+    document.querySelectorAll("[data-area-name]").forEach(function(el){el.textContent=a.name});
+    document.querySelectorAll("[data-area-copy]").forEach(function(el){
+      el.textContent=(el.dataset.areaCopy||"").replace(/\{area\}/g,a.name);
+    });
+
     const block=document.getElementById("homeLocalBlock");
     const data=localData[key];
     if(block&&data){
       block.classList.add("visible");
-      const ids = {
+      const ids={
         localStoryTitle:data.story[0],localStoryText:data.story[1],
         localCampaignTitle:data.campaign[0],localCampaignText:data.campaign[1],
         localEventTitle:data.event[0],localEventText:data.event[1]
       };
-      Object.entries(ids).forEach(([id,val])=>{const e=document.getElementById(id);if(e)e.textContent=val});
-      [["localStoryImage",data.story[2]],["localCampaignImage",data.campaign[2]],["localEventImage",data.event[2]]].forEach(([id,val])=>{const e=document.getElementById(id);if(e)e.style.backgroundImage=`url("${val}")`});
-      [["localStoryLink",data.story[3]],["localCampaignLink",data.campaign[3]],["localEventLink",data.event[3]]].forEach(([id,val])=>{const e=document.getElementById(id);if(e)e.href=val});
+      Object.entries(ids).forEach(function(pair){
+        const el=document.getElementById(pair[0]);
+        if(el) el.textContent=pair[1];
+      });
+      [["localStoryImage",data.story[2]],["localCampaignImage",data.campaign[2]],["localEventImage",data.event[2]]].forEach(function(pair){
+        const el=document.getElementById(pair[0]);
+        if(el) el.style.backgroundImage=`url("${pair[1]}")`;
+      });
+      [["localStoryLink",data.story[3]],["localCampaignLink",data.campaign[3]],["localEventLink",data.event[3]]].forEach(function(pair){
+        const el=document.getElementById(pair[0]);
+        if(el) el.href=pair[1];
+      });
     }
-    const areaHub=document.getElementById("areaHub");
-    if(areaHub){
-      const generic=document.getElementById("areaGeneric");
-      if(generic) generic.style.display="none";
-      areaHub.style.display="block";
-      const h=document.getElementById("areaHubTitle"); if(h) h.textContent=`Ben in ${a.name}`;
-      const p=document.getElementById("areaHubIntro"); if(p) p.textContent=a.heroSupport || `Local campaign updates for ${a.name}.`;
-    }
+
+    renderAreaHub(key);
+    splitAreaContent(key);
     decorateLinks(key);
   }
+
   function decorateLinks(area){
     document.querySelectorAll('a[href]').forEach(a=>{
       const raw=a.getAttribute("href");

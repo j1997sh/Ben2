@@ -706,3 +706,29 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
   .policy-local-card{grid-template-columns:1fr}
   .policy-local-image{min-height:200px}
 }
+
+
+
+/* V9 local-first news/events */
+.local-first-note{
+  margin:0 0 22px;
+  padding:12px 0 14px;
+  border-bottom:1px solid var(--line);
+  color:var(--muted);
+  font-size:14px;
+}
+.area-card-badge{
+  display:inline-block;
+  width:max-content;
+  margin:0 0 10px;
+  padding:5px 8px;
+  background:var(--blue);
+  color:#fff;
+  font-size:11px;
+  line-height:1;
+  font-weight:900;
+}
+#newsAllGrid[style*="display: none"],
+#eventsAllGrid[style*="display: none"]{
+  display:none!important;
+}

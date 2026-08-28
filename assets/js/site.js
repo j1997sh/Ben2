@@ -285,6 +285,14 @@
     const a=AREAS[key]; if(!a) return;
     document.documentElement.dataset.area=key;
 
+    // Proof of concept: allow the homepage hero to localise with the selected area.
+    // Crewe uses a dedicated local image; other areas keep the regional default for now.
+    const homeHero=document.querySelector('.home-hero');
+    if(homeHero){
+      const heroByArea={crewe:'assets/images/crewe-hero.jpg'};
+      homeHero.style.backgroundImage=`url("${heroByArea[key]||'assets/images/ben-home-hero.jpg'}")`;
+    }
+
     const status=document.getElementById("localStatus");
     const name=document.getElementById("localStatusName");
     if(status&&name){

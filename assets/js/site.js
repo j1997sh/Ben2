@@ -460,17 +460,23 @@
 })();
 
 
-  /* V10 preferences and thank-you journeys */
+  /* Preferences and thank-you journeys */
   (function(){
+    const AREAS=window.BEN_CAMPAIGN_AREAS||{};
+    function getAreaLocal(){
+      const q=new URLSearchParams(location.search).get("area");
+      if(q&&AREAS[q])return q;
+      try{return sessionStorage.getItem("benArea")||localStorage.getItem("benArea")||""}catch(e){return ""}
+    }
     const form=document.getElementById("preferencesForm");
     if(form){
-      const area=getArea();
+      const area=getAreaLocal();
       if(area && AREAS[area]){
         const t=document.getElementById("prefAreaTitle");
         if(t)t.textContent="Updates from "+AREAS[area].name;
       }
       try{
-        const saved=JSON.parse(sessionStorage.getItem("benPreferences")||"{}");
+        const saved=JSON.parse(localStorage.getItem("benPreferences")||sessionStorage.getItem("benPreferences")||"{}");
         Object.keys(saved).forEach(function(k){
           const el=form.querySelector(`[name="${k}"]`);
           if(el)el.checked=!!saved[k];
@@ -480,8 +486,8 @@
         ev.preventDefault();
         const prefs={};
         new FormData(form).forEach(function(v,k){prefs[k]=true});
-        ["area_updates","plan","events","campaigns","monthly"].forEach(function(k){if(!(k in prefs))prefs[k]=false});
-        try{sessionStorage.setItem("benPreferences",JSON.stringify(prefs))}catch(e){}
+        ["area_updates","issue_updates","plan","events","campaigns","monthly"].forEach(function(k){if(!(k in prefs))prefs[k]=false});
+        try{sessionStorage.setItem("benPreferences",JSON.stringify(prefs));localStorage.setItem("benPreferences",JSON.stringify(prefs))}catch(e){}
         const saved=document.getElementById("prefSaved");if(saved)saved.style.display="inline";
       });
     }
@@ -490,7 +496,7 @@
     if(context){
       let action={};
       try{action=JSON.parse(sessionStorage.getItem("lastBenAction")||"{}")}catch(e){}
-      const area=action.area||getArea();
+      const area=action.area||getAreaLocal();
       if(area && AREAS[area]){
         const lt=document.getElementById("thanksLocalTitle");
         const ll=document.getElementById("thanksLocalLink");
@@ -509,3 +515,25 @@
       if(context==="donation"){if(nt)nt.textContent="Stay connected";if(nx)nx.textContent="Choose which campaign updates you want to receive.";if(nl)nl.href="preferences.html"}
     }
   })();
+
+
+/* Load the V12 personalisation layer site-wide. Existing pages only need site.js. */
+(function(){
+  const current=document.currentScript;
+  const logicUrl=current?new URL('personalisation.js?v=12',current.src).href:'assets/js/personalisation.js?v=12';
+  const dataUrl=current?new URL('../data/personalisation.js?v=12',current.src).href:'assets/data/personalisation.js?v=12';
+  function loadLogic(){
+    if(document.querySelector('script[data-ben-personalisation-logic]'))return;
+    const js=document.createElement('script');
+    js.src=logicUrl;
+    js.dataset.benPersonalisationLogic='1';
+    document.head.appendChild(js);
+  }
+  if(window.BEN_PERSONALISATION){loadLogic();return;}
+  if(document.querySelector('script[data-ben-personalisation-data]'))return;
+  const data=document.createElement('script');
+  data.src=dataUrl;
+  data.dataset.benPersonalisationData='1';
+  data.onload=loadLogic;
+  document.head.appendChild(data);
+})();

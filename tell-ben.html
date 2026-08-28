@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tell Ben | Back Ben for Mayor</title>
 <meta name="description" content="Tell Ben">
-<link rel="stylesheet" href="assets/css/site.css?v=11">
+<link rel="stylesheet" href="assets/css/site.css?v=12">
 <script src="assets/data/areas.js?v=11"></script>
 </head>
 <body data-page="tell-ben">
@@ -40,9 +40,29 @@
   </div>
 </div>
 
-<section class="page-hero" style="background-image:url('assets/images/ben-area.jpg')"><div class="container"><h1>Tell Ben</h1><p>What needs to change where you live? Share what matters to you and help shape the campaign.</p></div></section>
-<section class="section"><div class="container two-col"><div><h2>Your priorities</h2><p class="lead" data-area-copy="Tell Ben what matters most in {area}.">Tell Ben what matters most where you live.</p><div class="preference-grid"><div class="preference-option"><input id="p1" type="checkbox"><label for="p1"><strong>Transport</strong><span>Buses, roads, rail and local connections.</span></label></div><div class="preference-option"><input id="p2" type="checkbox"><label for="p2"><strong>Economy & skills</strong><span>Jobs, employers, training and investment.</span></label></div><div class="preference-option"><input id="p3" type="checkbox"><label for="p3"><strong>Safer communities</strong><span>Neighbourhood confidence and public safety.</span></label></div><div class="preference-option"><input id="p4" type="checkbox"><label for="p4"><strong>Homes & places</strong><span>Housing, infrastructure and town centres.</span></label></div></div></div>
-<form class="form-grid" data-demo-form="survey" data-thanks="thanks.html"><input name="first_name" placeholder="First name"><input name="last_name" placeholder="Last name"><input class="full" name="email" type="email" placeholder="Email address"><input class="full" name="postcode" placeholder="Postcode"><textarea class="full" name="message" placeholder="What would you most like the new mayor to change?"></textarea><button class="btn full" type="submit">Send</button></form></div></section>
+<section class="page-hero" style="background-image:url('assets/images/ben-area.jpg')"><div class="container"><h1 id="tellBenHeroTitle">Tell Ben</h1><p id="tellBenHeroText">What needs to change where you live? Share what matters to you and help shape the campaign.</p></div></section>
+<section class="section">
+  <div class="container two-col">
+    <div>
+      <h2 id="tellBenPriorityTitle">Your priorities</h2>
+      <p class="lead" id="tellBenPrompt">Tell Ben what matters most where you live.</p>
+      <div class="preference-grid" id="tellBenIssueGrid">
+        <div class="preference-option" data-issue="transport"><input id="p1" name="issues" value="transport" type="checkbox" form="tellBenForm"><label for="p1"><strong>Transport</strong><span data-issue-copy>Buses, roads, rail and local connections.</span></label></div>
+        <div class="preference-option" data-issue="economy"><input id="p2" name="issues" value="economy" type="checkbox" form="tellBenForm"><label for="p2"><strong>Economy &amp; skills</strong><span data-issue-copy>Jobs, employers, training and investment.</span></label></div>
+        <div class="preference-option" data-issue="safety"><input id="p3" name="issues" value="safety" type="checkbox" form="tellBenForm"><label for="p3"><strong>Safer communities</strong><span data-issue-copy>Neighbourhood confidence and public safety.</span></label></div>
+        <div class="preference-option" data-issue="homes"><input id="p4" name="issues" value="homes" type="checkbox" form="tellBenForm"><label for="p4"><strong>Homes &amp; places</strong><span data-issue-copy>Housing, infrastructure and town centres.</span></label></div>
+      </div>
+      <div class="dynamic-proof" data-dynamic-proof></div>
+    </div>
+    <form class="form-grid" id="tellBenForm" data-demo-form="survey" data-thanks="survey-thanks.html">
+      <input name="first_name" placeholder="First name"><input name="last_name" placeholder="Last name"><input class="full" name="email" type="email" placeholder="Email address"><input class="full" name="postcode" placeholder="Postcode"><textarea class="full" name="message" placeholder="What would you most like the new mayor to change?"></textarea><button class="btn full" type="submit">Send</button>
+    </form>
+  </div>
+</section>
+<section class="section alt local-listening" id="tellBenListening">
+  <div class="container"><div class="section-head"><div><h2 id="tellBenListeningTitle">What people near you are telling Ben</h2><p class="lead">Approved, anonymised responses from local conversations.</p></div></div><div class="listening-grid" id="tellBenListeningGrid"></div></div>
+</section>
+<section class="section navy"><div class="container"><div class="smart-cta" data-smart-cta><h3 data-smart-title>Tell Ben what matters</h3><p data-smart-copy>Your next step changes as the campaign learns more about you.</p><a class="btn white" data-smart-link href="tell-ben.html">Continue</a></div></div></section>
 
 <footer>
   <div class="container">
@@ -59,6 +79,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=11"></script>
+<script src="assets/js/site.js?v=12"></script>
 </body>
 </html>

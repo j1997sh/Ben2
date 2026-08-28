@@ -916,13 +916,13 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
 
 .campaign-map-section{padding:64px 0;background:var(--alt)}
 .campaign-map-shell{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(300px,.62fr);border:1px solid var(--line);background:#fff;align-items:stretch}
-.campaign-map-main{min-width:0}
+.campaign-map-main{min-width:0;display:flex;flex-direction:column}
 .campaign-map-toolbar{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line);background:#fff;flex-wrap:wrap}
 .map-filters,.map-area-buttons{display:flex;gap:8px;flex-wrap:wrap}
 .map-filter,.map-area-button,.map-reset{border:1px solid #cbd5df;background:#fff;color:var(--navy);font:inherit;font-weight:800;font-size:12px;padding:9px 11px;cursor:pointer}
 .map-filter.active,.map-area-button.active{background:var(--navy);border-color:var(--navy);color:#fff}
 .map-reset{color:var(--blue)}
-#campaignMap{height:620px;width:100%;background:#e8eef4}
+#campaignMap{height:auto;min-height:620px;width:100%;background:#e8eef4;flex:1}
 .campaign-map-side{padding:34px 32px;background:var(--navy);color:#fff;display:flex;flex-direction:column;justify-content:flex-start}
 .campaign-map-side .eyebrow{color:#8ad4d8}
 .campaign-map-side h3{font-size:32px;line-height:1.02;margin:0 0 14px;color:#fff;max-width:320px}
@@ -970,5 +970,5 @@ footer{padding:55px 0 30px;background:var(--navy);color:#fff}
   .campaign-map-shell{grid-template-columns:1fr}.campaign-map-side{min-height:auto}.local-plan-examples{grid-template-columns:repeat(2,1fr)}.dashboard-grid{grid-template-columns:repeat(2,1fr)}.dashboard-item{border-bottom:1px solid var(--line)}.dashboard-item:last-child{grid-column:1/-1}.listening-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:650px){
-  #campaignMap{height:500px}.campaign-map-toolbar{padding:14px}.campaign-map-side{padding:24px}.map-filters{display:grid;grid-template-columns:1fr 1fr;width:100%}.map-filter{width:100%}.map-area-buttons{display:none}.local-plan-examples,.dashboard-grid,.listening-grid{grid-template-columns:1fr}.dashboard-item{border-right:0}.dashboard-item:last-child{grid-column:auto}.dashboard-head{display:block}.dashboard-head p{margin-top:8px}.local-plan-intro h2{font-size:32px}
+  #campaignMap{height:500px;min-height:500px;flex:none}.campaign-map-toolbar{padding:14px}.campaign-map-side{padding:24px}.map-filters{display:grid;grid-template-columns:1fr 1fr;width:100%}.map-filter{width:100%}.map-area-buttons{display:none}.local-plan-examples,.dashboard-grid,.listening-grid{grid-template-columns:1fr}.dashboard-item{border-right:0}.dashboard-item:last-child{grid-column:auto}.dashboard-head{display:block}.dashboard-head p{margin-top:8px}.local-plan-intro h2{font-size:32px}
 }

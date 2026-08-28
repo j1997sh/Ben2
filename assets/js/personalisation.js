@@ -169,7 +169,10 @@
     const title=box.querySelector('h2'); if(title)title.textContent=`What Ben’s plan means for ${AREAS[area].name}`;
     const copy=box.querySelector('[data-local-plan-copy]'); if(copy)copy.textContent=meta.planIntro;
     const examples=box.querySelector('[data-local-plan-examples]');
-    if(examples)examples.innerHTML=localIssueOrder(area).map(k=>`<a class="local-plan-chip" href="${addParams(ISSUES[k].page,{issue:k})}"><strong>${ISSUES[k].label}</strong><span>${meta.planExamples[k]}</span></a>`).join('');
+    if(examples){
+      const planImages={transport:'assets/images/ben-plan-hero.jpg',economy:'assets/images/ben-experience-hero.jpg',safety:'assets/images/ben-area.jpg',homes:'assets/images/ben-about-hero.jpg'};
+      examples.innerHTML=localIssueOrder(area).map(k=>`<a class="local-plan-chip image-card" href="${addParams(ISSUES[k].page,{issue:k})}" style="background-image:url('${planImages[k]||'assets/images/ben-plan-hero.jpg'}')"><strong>${ISSUES[k].label}</strong><span>${meta.planExamples[k]}</span></a>`).join('');
+    }
     const issue=currentIssue();
     if(issue){
       const section=document.querySelector(`[data-plan-issue="${issue}"]`);
@@ -331,7 +334,6 @@
     personaliseTellBen();
     personalisePlan();
     renderSmartCTAs();
-    renderDashboard();
     personaliseVolunteer();
     personalisePreferences();
     personaliseThanks();

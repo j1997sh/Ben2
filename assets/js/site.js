@@ -520,8 +520,8 @@
 /* Load the V12 personalisation layer site-wide. Existing pages only need site.js. */
 (function(){
   const current=document.currentScript;
-  const logicUrl=current?new URL('personalisation.js?v=12',current.src).href:'assets/js/personalisation.js?v=12';
-  const dataUrl=current?new URL('../data/personalisation.js?v=12',current.src).href:'assets/data/personalisation.js?v=12';
+  const logicUrl=current?new URL('personalisation.js?v=13',current.src).href:'assets/js/personalisation.js?v=13';
+  const dataUrl=current?new URL('../data/personalisation.js?v=13',current.src).href:'assets/data/personalisation.js?v=13';
   function loadLogic(){
     if(document.querySelector('script[data-ben-personalisation-logic]'))return;
     const js=document.createElement('script');
